@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function App() {
   
-  const [moves, setMoves] = useState<string>("")
+  const [moves, setMoves] = useState()
   const [name, setName] = useState<string>()
 
   function handleName(value: string) {
@@ -27,8 +27,23 @@ export default function App() {
       .then(res => {
         const generation: string = res.data.moves[0].version_group_details[0].version_group.name;
         console.log(generation);
-        setMoves(res.data.result);
-        console.log(res)
+        //setMoves(res.data.moves);
+        console.log(res.data.moves.length)
+        let row = []
+        for(let i = 0; res.data.moves.length; i++){
+          //console.log('primeiro for')
+          for(let b = 0; res.data.moves[i].version_group_details[b]; b++){
+            //console.log('segundo for')
+            if(res.data.moves[i].version_group_details[b].version_group.name == generation && res.data.moves[i].version_group_details[b].move_learn_method.name == "level-up"){
+              row.push(`Lv: ${res.data.moves[i].version_group_details[b].level_learned_at} ${res.data.moves[i].move.name}`);
+              console.log(row);
+            }
+          }
+        }
+        setMoves(row)
+        //console.log(res);
+        
+        //console.log(moves)
       })
   }
   
@@ -54,11 +69,7 @@ export default function App() {
             color="blue"
           />
         </View>
-        <ScrollView>
-          <FlatList>
-            {}
-          </FlatList>
-        </ScrollView>
+        
         <View style={styles.embaixo}>
           
         </View> 
