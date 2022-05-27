@@ -15,6 +15,7 @@ class HttpHelper {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
+
       List<dynamic> allMoves = data['moves'];
       List<String> pokeMovesMatch = [];
       String moveName = data['moves'][0]['move']['name'];
@@ -32,13 +33,13 @@ class HttpHelper {
           print(pokeMovesMatch);
         }
       }
-      //print(generation);
-      Pokemon pokemon = Pokemon(name, pokeMovesMatch);
+      String pokeSprite = data['sprites']['front_default'];
+      Pokemon pokemon = Pokemon(name, pokeMovesMatch, pokeSprite);
       print('${pokemon.name} moves: ${pokemon.moves}');
       return pokemon;
     } else {
       print(response.statusCode);
-      return Pokemon('err', ['moves', 'ER']);
+      return Pokemon('err', ['moves', 'ER'], 'null');
     }
   }
 
