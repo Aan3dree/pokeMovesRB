@@ -1,16 +1,10 @@
-# moves_rb
+# Pokemon Moves for Red and Blue versions
 
-A new Flutter project.
+A app who users can search by pokemon name, and it show how moves the pokemon will learn and the level to it in blue and red versions
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+TODO String format on moves
+TODO Exeption on erros
+TODO Exeption to eevee's evolutions
+TODO App Icon
+TODO Spinner when loading image
